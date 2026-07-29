@@ -17,4 +17,4 @@ data/*.gz
 .env
 *.pem
 
-.DS_Store
+.DS_Storedata/sample/*.jsonl.gz
