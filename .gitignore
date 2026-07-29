@@ -1,20 +1,26 @@
+# Python
 __pycache__/
 *.pyc
 .venv/
 venv/
 
+# Ignore datasets
 data/*.json
 data/*.jsonl
 data/*.csv
 data/*.parquet
 data/*.gz
+data/sample/*.jsonl.gz
 
+# Terraform
 .terraform/
 *.tfstate
 *.tfstate.backup
 .terraform.lock.hcl
 
+# Secrets
 .env
 *.pem
 
-.DS_Storedata/sample/*.jsonl.gz
+# macOS
+.DS_Store
