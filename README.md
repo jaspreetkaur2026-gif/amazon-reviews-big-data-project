@@ -1,37 +1,46 @@
-# Amazon Reviews Big Data Analytics
+# Amazon Reviews Big Data Analytics at Cloud Scale
 
 ## Project Overview
 
-This project analyzes the Amazon Reviews dataset using Apache Spark (PySpark) and AWS cloud services. The project combines Amazon review data with Amazon product metadata to analyze customer behavior, product popularity, store performance, and customer purchasing trends.
+This project analyzes the Amazon Reviews dataset using Apache Spark (PySpark) and AWS cloud services. The project combines Amazon review data with Amazon product metadata to analyze customer behavior, product popularity, product ratings, and purchasing trends.
 
-The solution was first developed locally using a smaller sample dataset and then deployed to AWS using Amazon S3, Amazon Athena, and Terraform to demonstrate scalable cloud-based big data analytics.
+The solution was first developed locally using a smaller sample dataset and then deployed to AWS cloud services using Amazon S3, Amazon Athena, and Terraform to demonstrate scalable big data analytics.
 
 ---
 
 # Project Objectives
 
-The objectives of this project are to:
-
-- Build a scalable big data analytics pipeline using Apache Spark.
-- Clean and preprocess Amazon review and product metadata.
-- Join multiple datasets using the `parent_asin` field.
-- Analyze customer purchasing behavior and product performance.
-- Deploy the solution on AWS cloud infrastructure.
-- Manage cloud resources using Terraform.
-- Demonstrate cloud-based analytics using Amazon Athena.
+- Build a scalable big data analytics solution using Apache Spark (PySpark).
+- Clean and preprocess Amazon review and metadata datasets.
+- Join multiple datasets using the **parent_asin** field.
+- Analyze customer behavior and product performance.
+- Deploy the solution using AWS cloud services.
+- Manage cloud infrastructure using Terraform.
+- Execute analytical SQL queries using Amazon Athena.
 
 ---
 
-# Dataset
+# Datasets
 
-This project uses two Amazon public datasets:
+This project uses two Amazon public datasets.
 
-1. Amazon Reviews Dataset
-2. Amazon Product Metadata Dataset
+### Amazon Reviews Dataset
 
-The datasets are joined using the **parent_asin** field.
+Contains customer reviews, ratings, verified purchases, review text, and helpful votes.
 
-The local implementation uses approximately **701,528 Amazon reviews** for development and testing before scaling the same workflow to cloud-based processing.
+### Amazon Product Metadata Dataset
+
+Contains product information including title, category, price, brand, and store.
+
+### Join Key
+
+Both datasets are joined using:
+
+```
+parent_asin
+```
+
+Local development was completed using a smaller sample dataset, while the cloud deployment analyzed over **109 million review records**.
 
 ---
 
@@ -40,7 +49,7 @@ The local implementation uses approximately **701,528 Amazon reviews** for devel
 - Python
 - Apache Spark (PySpark)
 - Spark SQL
-- AWS S3
+- Amazon S3
 - Amazon Athena
 - Terraform
 - AWS CLI
@@ -51,11 +60,10 @@ The local implementation uses approximately **701,528 Amazon reviews** for devel
 
 # Project Structure
 
-```text
+```
 amazon-reviews-big-data-project/
 
 ├── data/
-│   └── sample/
 ├── infrastructure/
 ├── queries/
 ├── results/
@@ -73,44 +81,45 @@ amazon-reviews-big-data-project/
 
 # Data Preprocessing
 
-The preprocessing pipeline performs the following steps:
+The preprocessing pipeline includes:
 
-- Missing value imputation
+- Missing value handling
 - Duplicate removal
-- Outlier detection and treatment
-- Min-Max normalization
-- Boolean encoding for verified purchases
+- Outlier treatment
+- Data normalization
+- Boolean encoding
 - Rating binning
 - Price binning
-- Store and product data cleaning
-- Price validation
+- Data cleaning
+- Data validation
 - Cross-source dataset joining
 
 ---
 
 # Cloud Infrastructure
 
-AWS services used in this project include:
+The project uses:
 
 - Amazon S3 for cloud storage
 - Amazon Athena for SQL analytics
 - Terraform for Infrastructure as Code
 - AWS CLI for cloud management
 
-Terraform is used to provision and manage the cloud infrastructure, making the deployment reproducible.
+Terraform provisions the cloud resources, making the deployment reproducible.
 
 ---
 
 # Analytics Performed
 
-The project performs multiple analytical queries, including:
+The project includes analytical SQL queries such as:
 
-- Average rating by product category
-- Top reviewed products
-- Store performance analysis
-- Verified vs. non-verified purchase analysis
+- Total number of reviews
+- Total number of products
+- Average product rating
+- Product popularity
+- Store performance
 - Product rating distribution
-- Price range analysis
+- Verified purchase analysis
 - Helpful vote analysis
 - Cross-source joins between reviews and product metadata
 
@@ -118,19 +127,19 @@ The project performs multiple analytical queries, including:
 
 # Running the Project
 
-## Install Required Packages
+## Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Run the Preprocessing Pipeline
+## Run preprocessing
 
 ```bash
 python3 src/preprocessing.py
 ```
 
-## Run Analytics
+## Run analytics
 
 ```bash
 python3 src/analytics.py
@@ -138,30 +147,41 @@ python3 src/analytics.py
 
 ---
 
-# Sample Results
+# Cloud Results
 
-The project successfully analyzed more than **700,000 Amazon reviews** and generated insights including:
+Cloud deployment successfully processed:
+
+- **109,920,290 Amazon review records**
+- **8,828,493 product metadata records**
+- **Average Rating: 4.15**
+
+The project generated insights including:
 
 - Customer purchasing behavior
 - Product popularity
-- Product category performance
-- Store performance
+- Product performance
+- Store analysis
 - Rating distribution
-- Verified purchase behavior
-- Helpful vote statistics
-- Cross-source analytics using review and metadata datasets
+- Cross-source analytics
+- SQL-based cloud analytics using Amazon Athena
 
 ---
 
 # Future Improvements
 
-Future enhancements include:
+- Build an interactive dashboard.
+- Add machine learning models for prediction.
+- Optimize Spark and Athena performance.
+- Expand the analysis to additional Amazon product categories.
+- Automate data ingestion and reporting.
 
-- Processing larger Amazon review datasets
-- Scaling the cloud solution to process over 100 million rows
-- Building an interactive dashboard
-- Adding machine learning models for review prediction
-- Optimizing Spark and Athena query performance
+---
+
+# Dataset Source
+
+Amazon Reviews Public Dataset
+
+https://amazon-reviews-2023.github.io/
 
 ---
 
