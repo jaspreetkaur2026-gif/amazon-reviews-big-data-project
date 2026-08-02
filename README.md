@@ -176,14 +176,11 @@ The project generated insights including:
 - Automate data ingestion and reporting.
 
 ---
-
 # Dataset Source
 
-Amazon Reviews Public Dataset
+Amazon Reviews 2023 Dataset
 
 https://amazon-reviews-2023.github.io/
-
----
 
 # Author
 
